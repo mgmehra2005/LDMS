@@ -9,7 +9,7 @@ import colorama
 #Start
 try:
   databases = {}
-  log_file=open(".log.txt", "a")
+  log_file=open(".logs", "a")
   print("\n-> MENU\n")
   options = ["Create Database",
            "Delete Database",
