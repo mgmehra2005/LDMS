@@ -4,17 +4,18 @@
 from tabulate import tabulate
 from functools import reduce
 import __functions__
+from __functions__ import logs
 import colorama
+import os
+import time
 
 #Start
 
 try:
-  databases = {}
-  log_file=open(".logs", "a")
   print("\n-> MENU\n")
   options = ["Create Database",
-           "Delete Database",
-           "Show Databases"]
+           "Show Databases",
+           "Delete Database"]
   option_number=0
   for items in options:
     option_number = option_number + 1
@@ -27,14 +28,39 @@ try:
   if (user_choice==1):
     print(f"\n>> Create Database")
     db_name=input("\nDatabase Name : ")
-    db_path=f"Databases/{db_name}"
-    create_db=open(db_path, "x")
-    create_db.close()
-    __functions__.logs(f"Database {db_name} created successfully.")
-    print("\nDatabase Created Successfully.")
+    db_availablity=os.path.isfile(f"Databases/{db_name}")
+    if db_availablity:
+      print(f"\nDatabase {db_name} is already Exist.")
+      logs("Database {db_name} is already Exist.")  
+    else:  
+      db_path=f"Databases/{db_name}"
+      create_db=open(db_path, "x")
+      create_db.close()
+      print("\nDatabase Created Successfully.")
+    logs(f"Database {db_name} created successfully.")
 
-  log_file.close()
+  elif (user_choice==2):
+    print(f"\n>> Databases\n")
+    __functions__.show_databse()
+    logs("Databases shown Successfully.")
 
+  elif (user_choice==3):
+    print(f"\n>> Dropping Database\n")
+    __functions__.show_databse()
+    db_name=input("\nDatabase name : ")
+    try:
+      os.system(f"rm Databases/{db_name}")
+      print("Database removed successfully.")
+      logs(f"Database {db_name} is removed successfully.")
+    except Exception as error:
+      print("\nThere is an eroor while removing database.")
+      user_input=input("\nDo you want to see the error (y/n) : ")
+      if (user_input=="y"):
+        print(program_error)
+      elif (user_input=="n"):
+        print("\nSorry for the interruption.")
+      logs(f"Error -> {error}")
+    
 except Exception as program_error:
   print("\nThere is an eroor while running the program.")
   user_input=input("\nDo you want to see the error (y/n) : ")
@@ -42,5 +68,6 @@ except Exception as program_error:
     print(program_error)
   elif (user_input=="n"):
     print("\nSorry for the interruption.")
+  logs(f"Error -> {program_error}")
 
 #End

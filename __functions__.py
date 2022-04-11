@@ -28,3 +28,12 @@ def logs(log):
   log_file=open(".logs", "a")
   log_file.write(f"=> {current_time('now')} : {log}\n")
   log_file.close
+
+def show_databse():
+  import os
+  directory=os.listdir(path="Databases/")
+  serial_number=0
+  for databases in directory:
+    serial_number+=1
+    print(f"{serial_number}. {databases}")
+

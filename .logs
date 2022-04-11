@@ -1,1 +1,16 @@
-
+=> 2022-04-11 12:54:53.829717 : Database Test created successfully.
+=> 2022-04-11 14:16:18.625645 : Database {db_name} is already Exist.
+=> 2022-04-11 14:16:18.625967 : Database Test created successfully.
+=> 2022-04-11 14:18:03.442432 : Database 56556 created successfully.
+=> 2022-04-11 14:19:07.302314 : Error -> [Errno 17] File exists: 'Databases/Test'
+=> 2022-04-11 14:19:21.101517 : Database {db_name} is already Exist.
+=> 2022-04-11 14:19:21.101728 : Database Test created successfully.
+=> 2022-04-11 14:19:45.927141 : Database {db_name} is already Exist.
+=> 2022-04-11 14:19:45.927366 : Database Test created successfully.
+=> 2022-04-11 14:19:55.322457 : Database World created successfully.
+=> 2022-04-11 14:55:55.599352 : Database Test_1 created successfully.
+=> 2022-04-11 14:56:12.074436 : Databases shown Successfully.
+=> 2022-04-11 14:56:34.851055 : Error -> invalid literal for int() with base 10: 'Test_1'
+=> 2022-04-11 14:56:57.284435 : Database Test_1 is removed successfully.
+=> 2022-04-11 15:01:50.817942 : Database Test_1 is removed successfully.
+=> 2022-04-11 15:03:02.134584 : Database World is removed successfully.
