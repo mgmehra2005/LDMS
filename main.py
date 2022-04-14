@@ -88,7 +88,7 @@ try:
             select_database = input("\nEnter database name : ")
             db_availablity = os.path.isfile(f"Databases/{select_database}")
             if db_availablity:
-                selected_database = open(f"{select_database}", "a")
+                selected_database = open(f"Databases/{select_database}", "a")
                 print(Fore.GREEN + "Database selected successfully.")
                 style_reset()
                 table_name=input("Enter table name : ")
@@ -96,6 +96,7 @@ try:
                 print(Fore.GREEN + "Table created successfully.")
                 style_reset()
                 logs(f"Table {table_name} created successfully.")
+                time.sleep(3)
                 __functions__.clear()
             else:
                 print(Fore.RED +
