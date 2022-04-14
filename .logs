@@ -22,3 +22,13 @@
 => 2022-04-12 20:37:28.754840 : Database World is removed successfully.
 => 2022-04-12 20:40:17.539877 : Database World is removed successfully.
 => 2022-04-12 20:40:24.759456 : Databases shown Successfully.
+=> 2022-04-14 12:38:28.405955 : Databases shown Successfully.
+=> 2022-04-14 13:00:25.640060 : Databases shown Successfully.
+=> 2022-04-14 13:00:38.812544 : Database Test2 created successfully.
+=> 2022-04-14 13:00:59.707753 : Database Test2 is removed successfully.
+=> 2022-04-14 13:02:18.064705 : Database lloopp is removed successfully.
+=> 2022-04-14 13:02:28.747945 : Databases shown Successfully.
+=> 2022-04-14 13:04:04.500874 : Database loop is removed successfully.
+=> 2022-04-14 13:04:24.772246 : Database loot is removed successfully.
+=> 2022-04-14 13:17:56.836015 : Error -> name 'select' is not defined
+=> 2022-04-14 13:18:36.270203 : Error -> name 'select' is not defined
