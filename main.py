@@ -92,7 +92,7 @@ try:
                 print(Fore.GREEN + "Database selected successfully.")
                 style_reset()
                 table_name=input("Enter table name : ")
-                selected_database.write(f"{table_name} = dict()")
+                selected_database.write(f"{table_name} = dict()\n")
                 print(Fore.GREEN + "Table created successfully.")
                 style_reset()
                 logs(f"Table {table_name} created successfully.")

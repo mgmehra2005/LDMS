@@ -26,7 +26,7 @@ def current_time(time_parameter):      #Parameters : full_time, hour, minute, no
     return result
 
 def logs(log):
-  '''Writes logs'''
+  '''Writes logs.'''
   log_file=open(".logs", "a")
   log_file.write(f"=> {current_time('now')} : {log}\n")
   log_file.close

@@ -32,3 +32,6 @@
 => 2022-04-14 13:04:24.772246 : Database loot is removed successfully.
 => 2022-04-14 13:17:56.836015 : Error -> name 'select' is not defined
 => 2022-04-14 13:18:36.270203 : Error -> name 'select' is not defined
+=> 2022-04-14 13:43:30.381531 : Table table2 created successfully.
+=> 2022-04-14 13:44:34.657050 : Table test1 created successfully.
+=> 2022-04-14 13:45:19.009771 : Table table3 created successfully.
