@@ -17,7 +17,7 @@ try:
         print("\n-> MENU\n")
         options = [
             "Create Database", "Show Databases", "Delete Database",
-            "Create Table"
+            "Edit Database"
         ]
         option_number = 0
         for items in options:
@@ -81,30 +81,32 @@ try:
                     print("\nSorry for the interruption.")
                 logs(f"Error -> {error}")
                 break
-
         elif (user_choice == 4):
-            print(f"\n>> Create Table\n")
-            __functions__.show_databse()
-            select_database = input("\nEnter database name : ")
-            db_availablity = os.path.isfile(f"Databases/{select_database}")
-            if db_availablity:
-                selected_database = open(f"Databases/{select_database}", "a")
-                print(Fore.GREEN + "Database selected successfully.")
-                style_reset()
-                table_name=input("Enter table name : ")
-                selected_database.write(f"{table_name} = dict()\n")
-                print(Fore.GREEN + "Table created successfully.")
-                style_reset()
-                logs(f"Table {table_name} created successfully.")
-                time.sleep(3)
-                __functions__.clear()
-            else:
-                print(Fore.RED +
-                      "Database not found.\nPlease recheck the database name.")
-                style_reset()
-                time.sleep(3)
-                break
-                logs(f"Error -> {error}")
+            option=["", "Create Table", "Edit Table"]
+            print()
+            if (user_choice == 4):
+                print(f"\n>> Create Table\n")
+                __functions__.show_databse()
+                select_database = input("\nEnter database name : ")
+                db_availablity = os.path.isfile(f"Databases/{select_database}")
+                if db_availablity:
+                    selected_database = open(f"Databases/{select_database}", "a")
+                    print(Fore.GREEN + "Database selected successfully.")
+                    style_reset()
+                    table_name=input("Enter table name : ")
+                    selected_database.write(f"{table_name} = dict()\n")
+                    print(Fore.GREEN + "Table created successfully.")
+                    style_reset()
+                    logs(f"Table {table_name} created successfully.")
+                    time.sleep(3)
+                    __functions__.clear()
+                else:
+                    print(Fore.RED +
+                          "Database not found.\nPlease recheck the database name.")
+                    style_reset()
+                    time.sleep(3)
+                    break
+                    logs(f"Error -> {error}")
 
     print(Fore.YELLOW + "Thanks for using Local Database System.")
     time.sleep(4)
