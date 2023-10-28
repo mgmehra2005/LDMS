@@ -2,11 +2,12 @@
 
 # Imported Modules
 import settings
+from colorama import Style, Fore
+import os
+import datetime
 
-
-def clear():
+def clear() -> None:
     """ clears all the text on the screen. """
-    import os
     try:
         if settings.Linux is True:
             os.system("clear")
@@ -18,7 +19,7 @@ def clear():
 
 def current_time(time_parameter):
     """ Parameters : full_time, hour, minute, now """
-    import datetime
+    
     clock = datetime.datetime.now()
     result = None
     if time_parameter == "full_time":
@@ -32,7 +33,7 @@ def current_time(time_parameter):
     return result
 
 
-def logs(log):
+def logs(log) -> None:
     """ Writes logs. """
     if settings.Write_Logs is True:
         log_file = open(".logs", "a")
@@ -40,12 +41,12 @@ def logs(log):
         log_file.close()
     elif settings.Write_Logs is False:
         log_file = open(".logs", "a")
-        log_file.write(f"=> Anonymous Action")
+        log_file.write("=> Anonymous Action")
         log_file.close()
 
-def show_database():
+def show_database() -> None:
     """This functions shows all the databases present in the database directory."""
-    import os
+    
     directory = os.listdir(path="Databases/")
     serial_number = 0
     for databases in directory:
@@ -53,20 +54,59 @@ def show_database():
         print(f"{serial_number}. {databases[:-3]}")
 
 
-def style_reset():
+def style_reset() -> None:
     """Resets all the style."""
-    from colorama import Style
     print(Style.RESET_ALL)
 
 
-def write_column(columns, database, table):
+def write_column(columns, 
+                 database, 
+                 table) -> None:
+  
     """Create columns in tables."""
-    from colorama import Fore
+    
     selected_database = open(f"Databases/{database}.py", "a")
     try:
-        for column in columns:
-            selected_database.write(f"{table}.{column} = []\n")
+        selected_database.write(f"{database}_tables.append('{table}')\n")
+        selected_database.write(f"{table}_property ="+" {}\n")
+        selected_database.write(f"{table}_property['columns'] = {columns}\n")
+        selected_database.write(f"{table} = []\n")
+      
         logs(f"Columns Written Successfully in table {table}.")
     except Exception as error:
         e = error
+        logs(f"Error -> {e}")
         print(Fore.RED + "There is an error while writing columns.")
+    selected_database.close()
+
+
+def MkDBFolder(FolderName: str="Databases") -> None:
+  """Creates folder for databases."""
+
+  if os.path.exists(FolderName) is False:
+    try:
+      os.mkdir(FolderName)
+      logs(f"Folder '{FolderName}' created.")
+    except Exception as e:
+      logs(f"Error -> {e}")
+  else:
+    logs("DB Folder already exist.")
+    pass
+
+def headerlogo(func):
+  def fx(*args, **kwargs):
+    clear()
+    print("""
+ _     ____  __  __ ____  
+| |   |  _ \|  \/  / ___| 
+| |   | | | | |\/| \___ \ 
+| |___| |_| | |  | |___) |
+|_____|____/|_|  |_|____/ 
+""".center(50), "\n")
+    result = func(*args, **kwargs)
+    return result
+  return fx
+
+@headerlogo
+def MsgHeader(message: str) -> None:
+  print(message)
