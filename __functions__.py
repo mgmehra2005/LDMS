@@ -67,7 +67,7 @@ def write_column(columns,
     
     selected_database = open(f"Databases/{database}.py", "a")
     try:
-        selected_database.write(f"{database}_tables.append('{table}')\n")
+        selected_database.write(f"tables.append('{table}')\n")
         selected_database.write(f"{table}_property ="+" {}\n")
         selected_database.write(f"{table}_property['columns'] = {columns}\n")
         selected_database.write(f"{table} = []\n")
@@ -110,3 +110,19 @@ def headerlogo(func):
 @headerlogo
 def MsgHeader(message: str) -> None:
   print(message)
+  logs(message)
+
+def ShowTables(database_name) -> None:
+  """Shows all the tables present in the database."""
+  
+  try:
+    from Databases import database_name as db
+
+    print(f"{Fore.GREEN}Tables Present in Database : ")
+    for index, tables in enumerate(db.tables, start=1):
+      print(f"{index}. {tables}")
+    
+  except Exception as error:
+    e = error
+    logs(f"Error -> {e}")
+    

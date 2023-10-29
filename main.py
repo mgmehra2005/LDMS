@@ -7,10 +7,7 @@
 # to the server when everything gets fixed.
 
 # Imported Modules
-from __functions__ import clear, current_time, logs, show_database, style_reset, write_column, MkDBFolder, headerlogo, MsgHeader
-from tabulate import tabulate
-from functools import reduce
-import settings
+from __functions__ import clear, logs, show_database, style_reset, write_column, MkDBFolder, headerlogo, MsgHeader, ShowTables
 from colorama import Fore
 import os
 import time
@@ -27,7 +24,7 @@ def main() -> None:
               "Create Database",
               "Show Databases",
               "Drop Database",
-              "Expand Database"
+              "Work with Tables"
           ]
           option_number = 0
           for items in options:
@@ -51,9 +48,8 @@ def main() -> None:
               else:
                   db_path = f"Databases/{db_name}.py"
                   create_db = open(db_path, "x")
-                  create_db.write(f"""
-{db_name}_tables = []
-  """)
+                  create_db.write(f'# {db_name}\n')
+                  create_db.write("tables = []\n")
                   create_db.close()
                   print(Fore.GREEN + "Database Created Successfully.")
                   style_reset()
@@ -98,21 +94,25 @@ def main() -> None:
                 
           elif user_choice == 4:
               clear()
-              option = ["Create Table", "Add Rows"]
-              numbers = 1
-              for options in option:
-                  print(f"{numbers}. {options}")
-                  numbers += 1
-              decision = int(input("\nChoose the option : "))
-              if decision == 1:
+              show_database()
+              selected_database = None
+              select_database = input("\nSelect Database : ").lower()
+              db_availability = os.path.isfile(f"Databases/{select_database}.py")
+              if db_availability:
+                  selected_database = open(f"Databases/{select_database}.py", "a")
+                  print(Fore.GREEN + f"Database {selected_database} selected successfully.")
                   clear()
-                  print("\n>> Create Table\n")
-                  show_database()
-                  select_database = input("\nEnter database name : ").lower()
-                  db_availability = os.path.isfile(f"Databases/{select_database}.py")
-                  if db_availability:
-                      selected_database = open(f"Databases/{select_database}.py", "a")
-                      print(Fore.GREEN + f"Database {selected_database} selected successfully.")
+                
+                  print("\n>> Work With Tables\n")
+                  option = ["Create Table", "Add Rows"]
+                  numbers = 1
+                  for options in option:
+                      print(f"{numbers}. {options}")
+                      numbers += 1
+                  decision = int(input("\nChoose the option : "))
+                  if decision == 1:
+                      clear()
+                      print("\n>> Create Table\n")
                       style_reset()
                       table_name = input("Enter table name : ")
                       selected_database.write(f"{table_name} = {select_database}()\n")
@@ -123,20 +123,30 @@ def main() -> None:
                       write_column(column_names, select_database, table_name)
                       time.sleep(3)
                       clear()
-                  else:
-                      print(Fore.RED +
-                            "Database not found.\nPlease recheck the database name.")
-                      style_reset()
-                      time.sleep(3)
-                      logs(f"Error -> Database '{select_database}' not found.")
-                      continue
+                  
 
             # TODO: Add row Function
             # TODO: Drop Table Function
             # TODO: Modify Table Function
-              elif decision == 2:
-                clear()
-                print("\n>> Add Row\n")
+                  elif decision == 2:
+                    clear()
+                    print("\n>> Add Row\n")
+                    ShowTables(selected_database)
+                    print("-"*20)
+                    table_name = input("Enter table name : ")
+                    
+                    style_reset()
+                    time.sleep(3)
+                    clear()
+                    
+                    
+              else:
+                  print(Fore.RED +"Database not found.\nPlease recheck the database name.")
+                  style_reset()
+                  time.sleep(3)
+                  logs(f"Error -> Database '{select_database}' not found.")
+                  clear()
+                  continue
                 
 
     

@@ -127,3 +127,13 @@
 => 2023-10-28 21:15:41.110197 : DB Folder already exist.
 => 2023-10-28 21:15:56.866944 : Table continent created successfully.
 => 2023-10-28 21:15:56.867283 : Columns Written Successfully in table continent.
+=> 2023-10-29 16:13:42.057088 : DB Folder already exist.
+=> 2023-10-29 16:14:29.359678 : Table seas created successfully.
+=> 2023-10-29 16:14:29.359917 : Columns Written Successfully in table seas.
+=> 2023-10-29 16:40:50.364472 : Checking Dependencies....
+=> 2023-10-29 16:40:50.364680 : DB Folder already exist.
+=> 2023-10-29 16:40:50.371698 : Starting Program....
+=> 2023-10-29 16:41:02.081436 : Error -> Database '' not found.
+=> 2023-10-29 16:42:26.614017 : Table aqua_animals created successfully.
+=> 2023-10-29 16:42:26.614234 : Columns Written Successfully in table aqua_animals.
+=> 2023-10-29 16:42:37.877746 : Error -> cannot import name 'database_name' from 'Databases' (unknown location)
